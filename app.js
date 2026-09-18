@@ -361,3 +361,465 @@ function addStyles() {
 }
 
 document.addEventListener("DOMContentLoaded", render);
+const players = [
+
+  // ================= ROYAL KINGS =================
+
+  {
+    name: "Sanjay",
+    fullName: "Sanjay B R",
+    team: "Royal Kings",
+    captain: true,
+    place: "Mandya, Karnataka",
+    role: "All-Rounder",
+    batting: "Right-Hand Batsman",
+    bowling: "Right-Arm Fast Bowler",
+    jersey: "02",
+    country: "India",
+    international: false
+  },
+
+  {
+    name: "Darshan",
+    fullName: "Darshan",
+    team: "Royal Kings",
+    captain: false,
+    place: "Tumkur, Karnataka",
+    role: "All-Rounder",
+    batting: "Right-Hand Batsman",
+    bowling: "Right-Arm Off-Spin",
+    jersey: "46",
+    country: "India",
+    international: false
+  },
+
+  {
+    name: "Bethell",
+    fullName: "Jacob Bethell",
+    team: "Royal Kings",
+    captain: false,
+    place: "England",
+    role: "Batter",
+    batting: "Left-Handed",
+    bowling: "Slow Left-Arm Orthodox",
+    jersey: "—",
+    country: "England",
+    international: true
+  },
+
+  {
+    name: "Cox",
+    fullName: "Jordan Cox",
+    team: "Royal Kings",
+    captain: false,
+    place: "England",
+    role: "Wicket Keeper",
+    batting: "Right-Handed",
+    bowling: "—",
+    jersey: "—",
+    country: "England",
+    international: true
+  },
+
+  {
+    name: "Bumrah",
+    fullName: "Jasprit Bumrah",
+    team: "Royal Kings",
+    captain: false,
+    place: "Ahmedabad, Gujarat, India",
+    role: "Bowler",
+    batting: "Right-Handed",
+    bowling: "Right-Arm Fast",
+    jersey: "93",
+    country: "India",
+    international: true
+  },
+
+  {
+    name: "Bhuvi",
+    fullName: "Bhuvneshwar Kumar",
+    team: "Royal Kings",
+    captain: false,
+    place: "Meerut, Uttar Pradesh, India",
+    role: "Bowler",
+    batting: "Right-Handed",
+    bowling: "Right-Arm Medium",
+    jersey: "15",
+    country: "India",
+    international: true
+  },
+
+  {
+    name: "Rashid",
+    fullName: "Rashid Khan",
+    team: "Royal Kings",
+    captain: false,
+    place: "Afghanistan",
+    role: "Bowler",
+    batting: "Right-Handed",
+    bowling: "Leg-Break Goog­ly",
+    jersey: "19",
+    country: "Afghanistan",
+    international: true
+  },
+
+  {
+    name: "Patidar",
+    fullName: "Rajat Patidar",
+    team: "Royal Kings",
+    captain: false,
+    place: "India",
+    role: "Batter",
+    batting: "Right-Handed",
+    bowling: "Off Break",
+    jersey: "—",
+    country: "India",
+    international: true
+  },
+
+
+  // ================= TITANS =================
+
+  {
+    name: "Yashas",
+    fullName: "Yashas",
+    team: "Titans",
+    captain: true,
+    place: "Tumkur, Karnataka",
+    role: "All-Rounder",
+    batting: "Right-Hand Batsman",
+    bowling: "Right-Arm Medium-Fast Bowler",
+    jersey: "07",
+    country: "India",
+    international: false
+  },
+
+  {
+    name: "S. Gill",
+    fullName: "Shubman Gill",
+    team: "Titans",
+    captain: false,
+    place: "Fazilka, Punjab, India",
+    role: "Batter",
+    batting: "Right-Handed",
+    bowling: "Off Break",
+    jersey: "77",
+    country: "India",
+    international: true
+  },
+
+  {
+    name: "Vishnu",
+    fullName: "Vishnu",
+    team: "Titans",
+    captain: false,
+    place: "Chitradurga, Karnataka",
+    role: "Batsman",
+    batting: "Right-Hand Batsman",
+    bowling: "Right-Arm Fast-Medium Bowler",
+    jersey: "18",
+    country: "India",
+    international: false
+  },
+
+  {
+    name: "Sai",
+    fullName: "Sai",
+    team: "Titans",
+    captain: false,
+    place: "—",
+    role: "—",
+    batting: "—",
+    bowling: "—",
+    jersey: "—",
+    country: "India",
+    international: false
+  },
+
+  {
+    name: "Manav Suthar",
+    fullName: "Manav Suthar",
+    team: "Titans",
+    captain: false,
+    place: "India",
+    role: "All-Rounder",
+    batting: "Left-Handed",
+    bowling: "Slow Left-Arm Orthodox",
+    jersey: "—",
+    country: "India",
+    international: true
+  },
+
+  {
+    name: "Salt",
+    fullName: "Phil Salt",
+    team: "Titans",
+    captain: false,
+    place: "England",
+    role: "Wicket Keeper",
+    batting: "Right-Handed",
+    bowling: "Off Break",
+    jersey: "—",
+    country: "England",
+    international: true
+  },
+
+  {
+    name: "Prince Yadav",
+    fullName: "Prince Yadav",
+    team: "Titans",
+    captain: false,
+    place: "India",
+    role: "Bowler",
+    batting: "Right-Handed",
+    bowling: "Right-Arm Fast",
+    jersey: "—",
+    country: "India",
+    international: true
+  },
+
+  {
+    name: "Raghuvanshi",
+    fullName: "Angkrish Raghuvanshi",
+    team: "Titans",
+    captain: false,
+    place: "India",
+    role: "Wicket Keeper",
+    batting: "Right-Handed",
+    bowling: "Slow Left-Arm Orthodox",
+    jersey: "18",
+    country: "India",
+    international: true
+  },
+
+
+  // ================= CHESARA =================
+
+  {
+    name: "Likith",
+    fullName: "Likith",
+    team: "Chesara",
+    captain: true,
+    place: "Hassan, Karnataka",
+    role: "All-Rounder",
+    batting: "Right-Hand Batsman",
+    bowling: "Right-Arm Fast Bowler",
+    jersey: "18",
+    country: "India",
+    international: false
+  },
+
+  {
+    name: "Prajwal P.K.",
+    fullName: "Prajwal P.K.",
+    team: "Chesara",
+    captain: false,
+    place: "Bagalkot, Karnataka",
+    role: "Batsman",
+    batting: "Right-Hand Batsman",
+    bowling: "Right-Arm Medium-Pace Bowler",
+    jersey: "06",
+    country: "India",
+    international: false
+  },
+
+  {
+    name: "Root",
+    fullName: "Joe Root",
+    team: "Chesara",
+    captain: false,
+    place: "England",
+    role: "Batter",
+    batting: "Right-Handed",
+    bowling: "Off Break",
+    jersey: "66",
+    country: "England",
+    international: true
+  },
+
+  {
+    name: "Smith",
+    fullName: "Steve Smith",
+    team: "Chesara",
+    captain: false,
+    place: "Australia",
+    role: "Batter",
+    batting: "Right-Handed",
+    bowling: "Leg-Break Goog­ly",
+    jersey: "49",
+    country: "Australia",
+    international: true
+  },
+
+  {
+    name: "Vaibhav",
+    fullName: "Vaibhav",
+    team: "Chesara",
+    captain: false,
+    place: "—",
+    role: "—",
+    batting: "—",
+    bowling: "—",
+    jersey: "—",
+    country: "India",
+    international: false
+  },
+
+  {
+    name: "Rahane",
+    fullName: "Ajinkya Rahane",
+    team: "Chesara",
+    captain: false,
+    place: "India",
+    role: "Batter",
+    batting: "Right-Handed",
+    bowling: "Right-Arm Medium",
+    jersey: "3",
+    country: "India",
+    international: true
+  },
+
+  {
+    name: "MS D",
+    fullName: "MS Dhoni",
+    team: "Chesara",
+    captain: false,
+    place: "Ranchi, Jharkhand, India",
+    role: "Wicket Keeper-Batter",
+    batting: "Right-Handed",
+    bowling: "—",
+    jersey: "7",
+    country: "India",
+    international: true
+  },
+
+  {
+    name: "Umesh",
+    fullName: "Umesh Yadav",
+    team: "Chesara",
+    captain: false,
+    place: "India",
+    role: "Bowler",
+    batting: "Right-Handed",
+    bowling: "Right-Arm Fast",
+    jersey: "—",
+    country: "India",
+    international: true
+  },
+
+
+  // ================= STARS =================
+
+  {
+    name: "Karan",
+    fullName: "Karan",
+    team: "Stars",
+    captain: true,
+    place: "Rajasthan",
+    role: "All-Rounder",
+    batting: "Left-Hand Batsman",
+    bowling: "Left-Arm Fast Bowler",
+    jersey: "12",
+    country: "India",
+    international: false
+  },
+
+  {
+    name: "Mohit",
+    fullName: "Mohit",
+    team: "Stars",
+    captain: false,
+    place: "Bihar",
+    role: "Batsman",
+    batting: "Right-Hand Batsman",
+    bowling: "Right-Arm Off-Spinner",
+    jersey: "44",
+    country: "India",
+    international: false
+  },
+
+  {
+    name: "Rabada",
+    fullName: "Kagiso Rabada",
+    team: "Stars",
+    captain: false,
+    place: "South Africa",
+    role: "Bowler",
+    batting: "Left-Handed",
+    bowling: "Right-Arm Fast",
+    jersey: "25",
+    country: "South Africa",
+    international: true
+  },
+
+  {
+    name: "Mohammed Siraj",
+    fullName: "Mohammed Siraj",
+    team: "Stars",
+    captain: false,
+    place: "Hyderabad, India",
+    role: "Bowler",
+    batting: "Right-Handed",
+    bowling: "Right-Arm Fast",
+    jersey: "73",
+    country: "India",
+    international: true
+  },
+
+  {
+    name: "Ben Mayers",
+    fullName: "Ben Mayers",
+    team: "Stars",
+    captain: false,
+    place: "—",
+    role: "—",
+    batting: "—",
+    bowling: "—",
+    jersey: "—",
+    country: "—",
+    international: false
+  },
+
+  {
+    name: "Rickelton",
+    fullName: "Ryan Rickelton",
+    team: "Stars",
+    captain: false,
+    place: "South Africa",
+    role: "Wicket Keeper",
+    batting: "Left-Handed",
+    bowling: "—",
+    jersey: "—",
+    country: "South Africa",
+    international: true
+  },
+
+  {
+    name: "S. Iyer",
+    fullName: "Shreyas Iyer",
+    team: "Stars",
+    captain: false,
+    place: "Mumbai, India",
+    role: "Batter",
+    batting: "Right-Handed",
+    bowling: "Leg-Break Goog­ly",
+    jersey: "96",
+    country: "India",
+    international: true
+  },
+
+  {
+    name: "Yashraj Punja",
+    fullName: "Yashraj Punja",
+    team: "Stars",
+    captain: false,
+    place: "—",
+    role: "—",
+    batting: "—",
+    bowling: "—",
+    jersey: "—",
+    country: "—",
+    international: false
+  }
+
+];
