@@ -1039,4 +1039,958 @@ function avatar(player) {
 
 const style = document.createElement("style");
 
-style.textContent
+style.textContent = `
+/* =========================================================
+   HPL SEASON 11 - UI + RENDER
+========================================================= */
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #07100b;
+  color: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+.hpl-header {
+  background: linear-gradient(135deg, #061008, #0b2b18);
+  border-bottom: 1px solid #1e6339;
+  padding: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.hpl-logo {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+}
+
+.hpl-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.hpl-subtitle {
+  color: #8ee6a9;
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+.hpl-nav {
+  background: #09150e;
+  border-bottom: 1px solid #173b25;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  gap: 5px;
+  padding: 8px 12px;
+}
+
+.nav-btn {
+  border: 0;
+  background: transparent;
+  color: #b7cabb;
+  padding: 10px 13px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+  background: #126b36;
+  color: #ffffff;
+}
+
+.hpl-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 18px 14px 50px;
+}
+
+.page-title {
+  font-size: 28px;
+  margin: 8px 0 4px;
+}
+
+.page-subtitle {
+  color: #91aa99;
+  margin: 0 0 18px;
+}
+
+.hero {
+  background:
+    radial-gradient(circle at right top, #168b46 0, transparent 35%),
+    linear-gradient(135deg, #0b2415, #07100b);
+  border: 1px solid #1c6338;
+  border-radius: 18px;
+  padding: 25px;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  margin: 0 0 8px;
+  font-size: clamp(27px, 5vw, 44px);
+}
+
+.hero p {
+  color: #b8d0bf;
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  gap: 14px;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.card {
+  background: #0b1710;
+  border: 1px solid #1b3925;
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.card h3,
+.card h4 {
+  margin-top: 0;
+}
+
+.stat-number {
+  font-size: 28px;
+  font-weight: 800;
+  color: #72e397;
+}
+
+.muted {
+  color: #8fa397;
+}
+
+.team-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 120px;
+}
+
+.team-logo {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+.team-name {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.player-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.player-card {
+  background: #0b1710;
+  border: 1px solid #1b3925;
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.player-card:hover {
+  border-color: #39bd68;
+  transform: translateY(-2px);
+}
+
+.player-photo,
+.player-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-photo {
+  object-fit: cover;
+}
+
+.player-avatar {
+  background: #176b39;
+  color: white;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.player-card h3 {
+  text-align: center;
+  margin: 5px 0;
+}
+
+.player-card .role {
+  text-align: center;
+  color: #78dd99;
+  font-size: 13px;
+}
+
+.player-meta {
+  color: #9eb0a4;
+  font-size: 13px;
+  line-height: 1.7;
+  margin-top: 10px;
+}
+
+.match-card {
+  background: #0b1710;
+  border: 1px solid #1b3925;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.match-number {
+  color: #71df95;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.match-teams {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.match-team {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.match-team.right {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.match-team img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.score {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.vs {
+  color: #708477;
+}
+
+.result {
+  color: #76e49a;
+  font-weight: 700;
+}
+
+.ground {
+  color: #8ea296;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+th,
+td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #20372a;
+  text-align: left;
+}
+
+th {
+  color: #7de39b;
+  background: #0e2115;
+}
+
+td {
+  color: #dbe7de;
+}
+
+.team-cell {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.team-cell img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.scorecard {
+  margin-top: 14px;
+  border: 1px solid #1d4028;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.scorecard-header {
+  background: #0e2b18;
+  padding: 14px;
+  font-weight: 800;
+}
+
+.score-row {
+  display: grid;
+  grid-template-columns: 1fr 80px 90px;
+  padding: 10px 14px;
+  border-top: 1px solid #1c3023;
+}
+
+.score-row span:nth-child(2),
+.score-row span:nth-child(3) {
+  text-align: right;
+}
+
+.wicket {
+  color: #ffbd6b;
+}
+
+.filter {
+  width: 100%;
+  background: #09150e;
+  border: 1px solid #244a30;
+  color: white;
+  border-radius: 9px;
+  padding: 11px;
+  margin-bottom: 16px;
+}
+
+.footer {
+  border-top: 1px solid #1c3925;
+  color: #708276;
+  text-align: center;
+  padding: 25px 10px;
+  margin-top: 30px;
+  font-size: 13px;
+}
+
+.back-btn {
+  background: #126b36;
+  border: 0;
+  color: white;
+  padding: 9px 13px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 900px) {
+  .player-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .hpl-title {
+    font-size: 18px;
+  }
+
+  .hpl-container {
+    padding: 14px 10px 40px;
+  }
+
+  .grid-2,
+  .grid-4,
+  .player-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .player-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .player-card {
+    padding: 10px;
+  }
+
+  .player-photo,
+  .player-avatar {
+    width: 65px;
+    height: 65px;
+  }
+
+  .match-teams {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .match-team,
+  .match-team.right {
+    justify-content: center;
+  }
+
+  .score-row {
+    grid-template-columns: 1fr 60px 65px;
+  }
+}
+`;
+
+document.head.appendChild(style);
+
+
+/* =========================================================
+   FIX PLAYER NAMES
+========================================================= */
+
+HPL.scorecards[2].away[4][0] = "S. Iyer";
+HPL.scorecards[5].away[4][0] = "S. Iyer";
+HPL.scorecards[6].home[4][0] = "S. Iyer";
+
+
+/* =========================================================
+   APP ELEMENT
+========================================================= */
+
+const app = document.getElementById("app");
+
+if (!app) {
+  throw new Error("HPL app element not found");
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+let currentPage = "home";
+
+function navBar() {
+  const items = [
+    ["home", "Home"],
+    ["teams", "Teams"],
+    ["players", "Players"],
+    ["matches", "Matches"],
+    ["points", "Points Table"],
+    ["stats", "Player Stats"]
+  ];
+
+  return `
+    <nav class="hpl-nav">
+      <div class="nav-inner">
+        ${items.map(([id, label]) => `
+          <button
+            class="nav-btn ${currentPage === id ? "active" : ""}"
+            onclick="showPage('${id}')"
+          >
+            ${label}
+          </button>
+        `).join("")}
+      </div>
+    </nav>
+  `;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+function header() {
+  return `
+    <header class="hpl-header">
+      <div class="header-inner">
+        <img class="hpl-logo" src="hpl.png" alt="HPL">
+        <div>
+          <h1 class="hpl-title">HAND CRICKET PREMIER LEAGUE</h1>
+          <div class="hpl-subtitle">Season 11 • Official League Website</div>
+        </div>
+      </div>
+    </header>
+  `;
+}
+
+
+/* =========================================================
+   HOME
+========================================================= */
+
+function homePage() {
+  const totalMatches = HPL.matches.length;
+  const totalPlayers = HPL.players.length;
+  const totalTeams = HPL.teams.length;
+
+  return `
+    <section class="hero">
+      <h1>HPL Season 11</h1>
+      <p>
+        Hand Cricket Premier League — matches, teams, players,
+        statistics, scorecards and points table.
+      </p>
+    </section>
+
+    <div class="grid grid-4">
+      <div class="card">
+        <div class="muted">Teams</div>
+        <div class="stat-number">${totalTeams}</div>
+      </div>
+
+      <div class="card">
+        <div class="muted">Players</div>
+        <div class="stat-number">${totalPlayers}</div>
+      </div>
+
+      <div class="card">
+        <div class="muted">Matches</div>
+        <div class="stat-number">${totalMatches}</div>
+      </div>
+
+      <div class="card">
+        <div class="muted">Season</div>
+        <div class="stat-number">11</div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>Latest Match</h3>
+        ${matchSmall(HPL.matches[HPL.matches.length - 1])}
+      </div>
+
+      <div class="card">
+        <h3>Season Leaders</h3>
+        <p><b>Most Runs:</b> Sanjay — 402</p>
+        <p><b>Most Wickets:</b> Darshan — 17</p>
+        <p><b>Highest Score:</b> Sanjay — 206*</p>
+      </div>
+    </div>
+  `;
+}
+
+
+/* =========================================================
+   TEAMS
+========================================================= */
+
+function teamsPage() {
+  return `
+    <h2 class="page-title">Teams</h2>
+    <p class="page-subtitle">HPL Season 11 teams and home grounds</p>
+
+    <div class="grid grid-2">
+      ${HPL.teams.map(team => `
+        <div class="card team-card">
+          <img class="team-logo" src="${team.logo}" alt="${safe(team.name)}">
+          <div>
+            <div class="team-name">${safe(team.name)}</div>
+            <div class="muted">Captain: ${safe(team.captain)}</div>
+            <div class="ground">${safe(team.ground)}</div>
+          </div>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+
+/* =========================================================
+   PLAYERS
+========================================================= */
+
+function playersPage() {
+  return `
+    <h2 class="page-title">Players</h2>
+    <p class="page-subtitle">
+      HPL Season 11 player profiles
+    </p>
+
+    <input
+      id="playerSearch"
+      class="filter"
+      placeholder="Search player..."
+      oninput="filterPlayers(this.value)"
+    >
+
+    <div id="playerGrid" class="player-grid">
+      ${HPL.players.map(playerCard).join("")}
+    </div>
+  `;
+}
+
+function playerCard(player) {
+  return `
+    <article class="player-card" data-player="${safe(playerName(player).toLowerCase())}">
+      ${avatar(player)}
+
+      <h3>${safe(playerName(player))}${player.captain ? " 🏏" : ""}</h3>
+
+      <div class="role">
+        ${safe(player.role || "Player")}
+      </div>
+
+      <div class="player-meta">
+        ${player.place ? `📍 ${safe(player.place)}<br>` : ""}
+        ${player.batting ? `🏏 ${safe(player.batting)}<br>` : ""}
+        ${player.bowling ? `⚾ ${safe(player.bowling)}<br>` : ""}
+        ${player.jersey ? `#${safe(player.jersey)}<br>` : ""}
+        <b>${safe(player.record.runs)} runs</b> •
+        <b>${safe(player.record.wickets)} wickets</b>
+      </div>
+    </article>
+  `;
+}
+
+function filterPlayers(value) {
+  const query = value.toLowerCase().trim();
+
+  document.querySelectorAll("#playerGrid .player-card").forEach(card => {
+    card.style.display =
+      card.dataset.player.includes(query) ? "" : "none";
+  });
+}
+
+
+/* =========================================================
+   MATCHES
+========================================================= */
+
+function matchesPage() {
+  return `
+    <h2 class="page-title">Matches</h2>
+    <p class="page-subtitle">
+      HPL Season 11 match results and scorecards
+    </p>
+
+    ${HPL.matches.map(matchCard).join("")}
+  `;
+}
+
+function matchSmall(match) {
+  return `
+    <div>
+      <div class="match-number">MATCH ${match.id}</div>
+
+      <div class="match-teams">
+        <div class="match-team">
+          <img src="${teamLogo(match.home)}" alt="">
+          <div>
+            <b>${safe(match.home)}</b><br>
+            <span class="score">${safe(match.homeScore)}</span>
+          </div>
+        </div>
+
+        <div class="vs">VS</div>
+
+        <div class="match-team right">
+          <div>
+            <b>${safe(match.away)}</b><br>
+            <span class="score">${safe(match.awayScore)}</span>
+          </div>
+          <img src="${teamLogo(match.away)}" alt="">
+        </div>
+      </div>
+
+      <div class="result">${safe(match.result)}</div>
+      <div class="ground">📍 ${safe(match.ground)}</div>
+    </div>
+  `;
+}
+
+function matchCard(match) {
+  return `
+    <article class="match-card">
+      ${matchSmall(match)}
+
+      <br>
+
+      <button
+        class="back-btn"
+        onclick="showScorecard(${match.id})"
+      >
+        View Scorecard
+      </button>
+    </article>
+  `;
+}
+
+
+/* =========================================================
+   SCORECARD
+========================================================= */
+
+function showScorecard(id) {
+  currentPage = "scorecard";
+
+  const match = HPL.matches.find(m => m.id === id);
+  const scorecard = HPL.scorecards[id];
+
+  if (!match || !scorecard) return;
+
+  app.innerHTML = `
+    ${header()}
+    ${navBar()}
+
+    <main class="hpl-container">
+
+      <button class="back-btn" onclick="showPage('matches')">
+        ← Back to Matches
+      </button>
+
+      <h2 class="page-title">Match ${match.id} Scorecard</h2>
+
+      <div class="card">
+        ${matchSmall(match)}
+      </div>
+
+      ${scorecardTable(
+        match.home,
+        match.homeScore,
+        scorecard.home
+      )}
+
+      ${scorecardTable(
+        match.away,
+        match.awayScore,
+        scorecard.away
+      )}
+
+    </main>
+
+    ${footer()}
+  `;
+
+  window.scrollTo(0, 0);
+}
+
+function scorecardTable(team, score, rows) {
+  return `
+    <div class="scorecard">
+      <div class="scorecard-header">
+        ${safe(team)} — ${safe(score)}
+      </div>
+
+      ${rows.map(row => {
+        const name = row[0];
+        const runs = row[1];
+        const wickets = row[2];
+
+        return `
+          <div class="score-row">
+            <span>${safe(name)}</span>
+
+            <span>
+              ${runs === null ? "-" : safe(runs)}
+              ${runs !== null && runs >= 100 ? "*" : ""}
+            </span>
+
+            <span class="wicket">
+              ${wickets ? "│".repeat(wickets) : ""}
+            </span>
+          </div>
+        `;
+      }).join("")}
+    </div>
+  `;
+}
+
+
+/* =========================================================
+   POINTS TABLE
+========================================================= */
+
+function pointsPage() {
+  return `
+    <h2 class="page-title">Points Table</h2>
+    <p class="page-subtitle">
+      HPL Season 11 standings
+    </p>
+
+    <div class="card table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Played</th>
+            <th>Won</th>
+            <th>Lost</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          ${HPL.points.map(row => `
+            <tr>
+              <td>
+                <div class="team-cell">
+                  <img src="${teamLogo(row.team)}" alt="">
+                  ${safe(row.team)}
+                </div>
+              </td>
+              <td>${row.played}</td>
+              <td>${row.won}</td>
+              <td>${row.lost}</td>
+              <td><b>${row.points}</b></td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </div>
+
+    <p class="muted">
+      Note: Teams with equal points are not additionally ranked here.
+    </p>
+  `;
+}
+
+
+/* =========================================================
+   PLAYER STATS
+========================================================= */
+
+function statsPage() {
+  const sorted = [...HPL.players]
+    .filter(p => p.record && p.record.matches > 0)
+    .sort((a, b) => b.record.runs - a.record.runs);
+
+  return `
+    <h2 class="page-title">Player Stats</h2>
+    <p class="page-subtitle">
+      Season 11 recorded statistics
+    </p>
+
+    <div class="card table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Player</th>
+            <th>Matches</th>
+            <th>Runs</th>
+            <th>Wickets</th>
+            <th>Best</th>
+            <th>50s</th>
+            <th>100s</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          ${sorted.map(p => `
+            <tr>
+              <td><b>${safe(playerName(p))}</b></td>
+              <td>${p.record.matches}</td>
+              <td>${p.record.runs}</td>
+              <td>${p.record.wickets}</td>
+              <td>${p.record.best}</td>
+              <td>${p.record.fifties}</td>
+              <td>${p.record.hundreds}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+function footer() {
+  return `
+    <footer class="footer">
+      HAND CRICKET PREMIER LEAGUE • HPL Season 11
+    </footer>
+  `;
+}
+
+
+/* =========================================================
+   PAGE ROUTER
+========================================================= */
+
+function showPage(page) {
+  currentPage = page;
+
+  let content = "";
+
+  if (page === "home") content = homePage();
+  if (page === "teams") content = teamsPage();
+  if (page === "players") content = playersPage();
+  if (page === "matches") content = matchesPage();
+  if (page === "points") content = pointsPage();
+  if (page === "stats") content = statsPage();
+
+  app.innerHTML = `
+    ${header()}
+    ${navBar()}
+
+    <main class="hpl-container">
+      ${content}
+    </main>
+
+    ${footer()}
+  `;
+
+  window.scrollTo(0, 0);
+}
+
+
+/* =========================================================
+   START APP
+========================================================= */
+
+showPage("home"); 
+
+console.log("HPL Season 11 loaded successfully.");
