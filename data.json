@@ -1,0 +1,36 @@
+{
+  "season": 11,
+  "teams": {
+    "Royal Kings": {
+      "short": "RK",
+      "ground": "M. Chinnaswamy Stadium, Bengaluru",
+      "captain": "Sanjay"
+    },
+    "Titans": {
+      "short": "TI",
+      "ground": "Narendra Modi Stadium, Ahmedabad",
+      "captain": "Yashas"
+    },
+    "Chasers": {
+      "short": "CH",
+      "ground": "Rajiv Gandhi International Cricket Stadium, Hyderabad",
+      "captain": "Likith"
+    },
+    "Stars": {
+      "short": "ST",
+      "ground": "Sawai Mansingh Stadium, Jaipur",
+      "captain": "Karan"
+    }
+  },
+  "match_count": 7,
+  "local_players": [
+    "Sanjay",
+    "Darshan",
+    "Yashas",
+    "Likith",
+    "Vishnu",
+    "Karan",
+    "Mohith",
+    "Prajwal"
+  ]
+}
